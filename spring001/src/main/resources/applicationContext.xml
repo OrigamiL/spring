@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+        创建学生对象
+        id：就是创建对象的名称
+        class：就是创建对象的类型，底层通过反射构建对象
+        启动容器的同时创建对象
+        如何给创建的对象赋值？
+        1.setter方式注入
+            简单类型注入值使用value属性
+            引用类型注入值使用ref属性   依赖注入
+            使用setter输入必须提供无参构造方法，必须提供setXxx()方法
+        2.使用构造方法注入
+    -->
+    <bean id="student" class="com.weifang.pojo.Student">
+        <property name="name" value="张三"/>
+        <property name="age" value="12"/>
+    </bean>
+    <bean id="school" class="com.weifang.pojo.School">
+        <property name="name" value="清华大学"/>
+        <property name="address" value="海淀区"/>
+    </bean>
+    <bean id="stu" class="com.weifang.pojo.Student1">
+        <property name="name" value="李四"/>
+        <property name="age" value="13"/>
+        <property name="school" ref="school"/>
+    </bean>
+</beans>
