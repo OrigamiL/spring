@@ -1,8 +1,8 @@
 package com.weifang;
 
-import com.weifang.pojo.School;
 import com.weifang.pojo.Student;
 import com.weifang.pojo.Student1;
+import com.weifang.pojo2.School;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -37,5 +37,11 @@ public class MyTest {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
         Student1 student1 = (Student1) ac.getBean("stu");
         System.out.println(student1);
+    }
+    @Test
+    public void testSchool2() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("ac1/applicationContext.xml");
+        School school = (School) ac.getBean("school");
+        System.out.println(school);
     }
 }

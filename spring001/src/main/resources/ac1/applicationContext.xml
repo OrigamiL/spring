@@ -3,12 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="uM" class="com.weifang.dao.UserMapperImpl"/>
-    <bean id="uS" class="com.weifang.service.impl.UserServiceImpl">
-        <property name="userMapper" ref="uM"/>
+    <bean id="school" class="com.weifang.pojo2.School">
+        <!--该处使用构造方法的参数名称-->
+        <constructor-arg name="name1" value="清华"/>
+        <constructor-arg name="address1" value="海淀区"/>
     </bean>
-    <bean id="uC" class="com.weifang.controller.UserController">
-        <property name="userService" ref="uS"/>
-    </bean>
-
 </beans>
