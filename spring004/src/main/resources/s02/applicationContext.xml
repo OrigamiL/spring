@@ -1,25 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--使用构造方法的参数名称注入值-->
-    <bean id="school" class="com.weifang.pojo2.School">
-        <constructor-arg name="name1" value="清华"/>
-        <constructor-arg name="address1" value="海淀区"/>
-    </bean>
-    <!--使用构造方法参数下标注入值-->
-    <bean id="student" class="com.weifang.pojo2.Student">
-        <constructor-arg index="0" value="张三"/>
-        <constructor-arg index="1" value="12"/>
-        <constructor-arg index="2" ref="school"/>
-    </bean>
-    <!--使用构造方法默认的顺序注入值-->
-    <bean id="stuSequence" class="com.weifang.pojo2.Student">
-        <constructor-arg value="李四"/>
-        <constructor-arg value="22"/>
-        <constructor-arg ref="school"/>
-    </bean>
     <!--
         1.创建对象的注解
         @Component  可以创建任意对象
@@ -30,7 +14,17 @@
         简单类型的注入：
         @Value 用来给简单类型注入值
         引用类型的注入：
+        同源类型才可以注入 被注入的类型Student中的school 与注入的类型是完全相同的类型
+                        被注入的类型Student中的school父 与注入的类型（子）是父子类
+                        被注入的类型Student中的school接口与注入的类型（实现类）是接口和实现类的类型
         @Autowired 使用类型注入值，从整个Bean工厂中搜索同源类型的对象进行注入
         @Autowired + @Qualifier 使用名称注入值，从整个Bean工厂中搜索相同名称的对象进行注入
     -->
+    <!--
+
+        基于注解的IOC必须在Spring的核心配置文件中添加包扫描
+        @Component 默认创建对象的名称为类名的驼峰命名法
+        @Component("") 指定对象的名称
+    -->
+    <context:component-scan base-package="com.weifang.s02"/>
 </beans>

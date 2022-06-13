@@ -12,7 +12,6 @@
             简单类型注入值使用value属性
             引用类型注入值使用ref属性   依赖注入
             使用setter输入必须提供无参构造方法，必须提供setXxx()方法
-        2.使用构造方法注入
     -->
     <bean id="student" class="com.weifang.pojo.Student">
         <property name="name" value="张三"/>
@@ -25,6 +24,6 @@
     <bean id="stu" class="com.weifang.pojo.Student1">
         <property name="name" value="李四"/>
         <property name="age" value="13"/>
-        <property name="school" ref="school"/>
+        <property name="school1" ref="school"/>
     </bean>
 </beans>

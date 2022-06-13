@@ -41,7 +41,9 @@ public class MyTest {
     @Test
     public void testSchool2() {
         ApplicationContext ac = new ClassPathXmlApplicationContext("ac1/applicationContext.xml");
-        School school = (School) ac.getBean("school");
-        System.out.println(school);
+        com.weifang.pojo2.Student student = (com.weifang.pojo2.Student) ac.getBean("student");
+        System.out.println(student);
+        com.weifang.pojo2.Student student1 = (com.weifang.pojo2.Student) ac.getBean("stuSequence");
+        System.out.println(student1);
     }
 }

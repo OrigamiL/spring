@@ -26,7 +26,7 @@ public class Student1 {
         this.age = age;
     }
 
-    public void setSchool(School school) {
+    public void setSchool1(School school) {
         this.school = school;
     }
 
