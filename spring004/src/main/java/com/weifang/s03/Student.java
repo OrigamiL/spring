@@ -22,7 +22,7 @@ public class Student {
     private int age;
     @Autowired
     //@Qualifier("subSchool")
-    @Qualifier("sc")
+    @Qualifier("school")
     private School school;
 
     public Student() {

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--
+        1.创建对象的注解
+        @Component  可以创建任意对象
+        @Controller 专门用来创建控制器的对象（Servlet） 这种对象可以接收用户的请求，可以返回处理结果给客户端。
+        @Service    专门用来创建业务逻辑层的对象，负责向下访问数据访问层，处理完毕后的结果返回给界面层。
+        @Repository 专门用来创建数据访问层的对象，负责数据库中的增删改查操作
+        2.依赖注入的注解
+        简单类型的注入：
+        @Value 用来给简单类型注入值
+        引用类型的注入：
+        同源类型才可以注入 被注入的类型Student中的school 与注入的类型是完全相同的类型
+                        被注入的类型Student中的school父 与注入的类型（子）是父子类
+                        被注入的类型Student中的school接口与注入的类型（实现类）是接口和实现类的类型
+        @Autowired 使用类型注入值，从整个Bean工厂中搜索同源类型的对象进行注入
+        @Autowired + @Qualifier 使用名称注入值，从整个Bean工厂中搜索相同名称的对象进行注入
+    -->
+    <!--
+
+        基于注解的IOC必须在Spring的核心配置文件中添加包扫描
+        @Component 默认创建对象的名称为类名的驼峰命名法
+        @Component("") 指定对象的名称
+    -->
+    <context:component-scan base-package="com.weifang.s03"/>
+</beans>

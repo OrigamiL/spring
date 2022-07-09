@@ -18,20 +18,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class MyTest {
     @Test
     public void testThreeLevel() {
-        UserController controller = new UserController();
-        int insert = controller.insert(new User(1, "zhang", 13));
-        System.out.println(insert);
-    }
-    @Test
-    public void testAnnotation() {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
-        UserController userController = (UserController)ac.getBean("userController");
-        userController.insert(new User(1,"赵六",22));
+        ApplicationContext ac = new ClassPathXmlApplicationContext("total.xml");
+        UserController userController = (UserController) ac.getBean("userController");
+        userController.insert(new User(111,"张三",21));
     }
     @Test
     public void testFenC() {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("total.xml");
+        ApplicationContext ac = new ClassPathXmlApplicationContext("all.xml");
         UserController userController = (UserController) ac.getBean("userController");
-        userController.insert(new User(1,"赵六",3));
+        userController.insert(new User(222,"李四",22));
     }
 }

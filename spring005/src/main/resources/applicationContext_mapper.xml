@@ -4,11 +4,5 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--只要是基于注解的开发必须添加包扫描-->
-    <!--多包扫描中间逗号 空格 分号分隔-->
-    <!--扫描根包 com.weifang 不推荐，会导致容器启动速度变慢-->
-    <!-- <context:component-scan base-package="com.weifang.controller,com.weifang.dao,com.weifang.service"/>-->
-    <context:component-scan base-package="com.weifang.controller"/>
-    <context:component-scan base-package="com.weifang.service.impl"/>
     <context:component-scan base-package="com.weifang.dao"/>
 </beans>
