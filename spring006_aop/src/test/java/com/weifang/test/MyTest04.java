@@ -21,6 +21,8 @@ public class MyTest04 {
     @Test
     public void testLog() {
         Service service = new Agent(new ProductServiceImpl(),new LogAop());
-        service.buy();
+       // service.buy();
+        Service service1 = new Agent(service,new TransAop());
+        service1.buy();
     }
 }
