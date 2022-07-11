@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--创建业务对象-->
+    <!--<bean id="someService" class="com.weifang.s01.SomeServiceImpl"/>-->
+    <!--创建切面对象-->
+    <!--<bean id="myAspect" class="com.weifang.s01.MyAspect"/>-->
+    <!--绑定-->
+    <context:component-scan base-package="com.weifang.s01"/>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--不加proxy-target-class="true"默认是JDK动态代理，必须使用接口类型
+        加上后设置为CGLib子类代理，可以使用接口和实现类-->
+</beans>

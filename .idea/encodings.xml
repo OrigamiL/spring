@@ -13,5 +13,7 @@
     <file url="file://$PROJECT_DIR$/spring005/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring006_aop/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring006_aop/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring007_aspectj/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring007_aspectj/src/main/resources" charset="UTF-8" />
   </component>
 </project>

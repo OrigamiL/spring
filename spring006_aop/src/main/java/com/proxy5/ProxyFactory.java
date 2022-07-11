@@ -19,6 +19,18 @@ import java.lang.reflect.Proxy;
 *   目标对象：操作谁谁就是目标对象
 * 通知（advice）：来制定切入的时机，是在目标方法执行前还是执行后，还是出错时，还是环绕目标方法切入切面功能。
 * */
+
+/*
+    execution(public * *(..)):任意的公共方法
+    execution(* set*(..)):任何一个以set开头的方法
+    execution(* com.xyz.service.impl.*.*(..)):任意的返回类型 在com.xyz.service.impl包下的任意类的任意参数的任意方法
+    execution(* com.xyz.service..*.*(..)):任意返回类型 在com.xyz.service包下的所有子包下的任意类的任意参数的任意方法
+    execution(* *..service.*.*(..)):service之前可以有任意个包
+    execution(* *.service.*.*(..)):service之前只有一个包
+
+    AspectJ的前置通知@Before
+    在目标方法执行前切入切面功能，在切面方法中不可以获得目标方法的返回值，只能得到目标方法的签名（方法名 形参个数 修饰符 类型）
+* */
 public class ProxyFactory {
 
     public static Object getAgent(Service target,Aop aop) {
