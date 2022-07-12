@@ -21,6 +21,8 @@ public class MyAspect {
     /*
     所有切面的功能都是由切面方法来实现
     可以将各种切面都在此类中进行开发
+
+
     前置通知的切面方法的规范：
     1.访问权限是public
     2.返回值是void
@@ -37,4 +39,7 @@ public class MyAspect {
         System.out.println("目标方法的签名："+joinPoint.getSignature());
         System.out.println("目标方法的参数："+ Arrays.toString(joinPoint.getArgs()));
     }
+    /*
+    后置通知
+    * */
 }

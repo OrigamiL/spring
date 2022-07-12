@@ -11,6 +11,8 @@
         <option value="$PROJECT_DIR$/spring005/pom.xml" />
         <option value="$PROJECT_DIR$/spring006_aop/pom.xml" />
         <option value="$PROJECT_DIR$/spring007_aspectj/pom.xml" />
+        <option value="$PROJECT_DIR$/sm/pom.xml" />
+        <option value="$PROJECT_DIR$/spring008_sm/pom.xml" />
       </list>
     </option>
   </component>
