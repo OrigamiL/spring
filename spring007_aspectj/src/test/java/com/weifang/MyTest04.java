@@ -19,6 +19,7 @@ public class MyTest04 {
     public void testAfter() {
         ApplicationContext ac = new ClassPathXmlApplicationContext("s04/applicationContext.xml");
         SomeService service = (SomeService) ac.getBean("someServiceImpl");
+        System.out.println(service.getClass());
         String s = service.doSome("张三", 11);
         System.out.println(s);
     }

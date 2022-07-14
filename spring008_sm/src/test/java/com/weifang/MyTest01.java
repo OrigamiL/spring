@@ -1,6 +1,8 @@
 package com.weifang;
 
+import com.weifang.pojo.Accounts;
 import com.weifang.pojo.Users;
+import com.weifang.service.AccountsService;
 import com.weifang.service.UsersService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -23,5 +25,13 @@ public class MyTest01 {
         UsersService service = (UsersService) ac.getBean("usersServiceImpl");
         int insert = service.insert(users);
         System.out.println(insert);
+    }
+    @Test
+    public void testAccount() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext_service.xml");
+        AccountsService service = (AccountsService) ac.getBean("accountsServiceImpl");
+        System.out.println(service.getClass());
+        int save = service.save(new Accounts(8, "zhangSan", "123"));
+        System.out.println("返回值："+save);
     }
 }
