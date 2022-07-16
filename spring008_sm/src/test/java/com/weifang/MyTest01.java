@@ -31,7 +31,7 @@ public class MyTest01 {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext_service.xml");
         AccountsService service = (AccountsService) ac.getBean("accountsServiceImpl");
         System.out.println(service.getClass());
-        int save = service.save(new Accounts(8, "zhangSan", "123"));
+        int save = service.save(new Accounts(11, "zhangSan", "123"));
         System.out.println("返回值："+save);
     }
 }
