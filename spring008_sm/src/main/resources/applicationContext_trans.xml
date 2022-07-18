@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd ">
+
+
+    <!--
+        spring非常有名的事务处理方式：声明式事务。要求项目中的方法命名有规范
+        1.完成增加操作包含 add save insert set
+        2.更新操作包含 update change modify
+        3.删除操作包含 delete drop remove clear
+        4.查询操作包含 select find search get query
+        配置事务切面时可以使用通配符*来匹配所有方法
+    -->
+
+    <!--此配置文件与applicationContext_service.xml功能相同，只是事务配置不同-->
+    <!--导入applicationContext_mapper.xml-->
+    <import resource="applicationContext_mapper.xml"/>
+    <!--添加包扫描-->
+    <context:component-scan base-package="com.weifang.service.impl"/>
+    <!--添加事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--添加注解事务-->
+    <tx:annotation-driven order="100" transaction-manager="transactionManager"/>
+    <!--配置事务切面-->
+    <tx:advice id="myAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*select*" read-only="true" />
+            <tx:method name="*find*" read-only="true"/>
+            <tx:method name="*get*" read-only="true"/>
+            <tx:method name="*query*" read-only="true"/>
+            <tx:method name="*search*" read-only="true"/>
+            <tx:method name="*add*" propagation="REQUIRED"/>
+            <tx:method name="*insert*" propagation="REQUIRED" no-rollback-for="ArithmeticException"/>
+            <tx:method name="*save*" propagation="REQUIRED" no-rollback-for="ArithmeticException"/>
+            <tx:method name="*update*" propagation="REQUIRED"/>
+            <tx:method name="*modify*" propagation="REQUIRED"/>
+            <tx:method name="*remove*" propagation="REQUIRED"/>
+            <tx:method name="*delete*" propagation="REQUIRED"/>
+            <tx:method name="*clear*" propagation="REQUIRED"/>
+            <tx:method name="*" propagation="SUPPORTS"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--绑定切面和切入点-->
+    <aop:config>
+        <aop:pointcut id="myCut" expression="execution(* com.weifang.service.impl.*.*(..))"/>
+        <aop:advisor advice-ref="myAdvice" order="1" pointcut-ref="myCut"/><!--order 优先级-->
+    </aop:config>
+    <aop:aspectj-autoproxy/>
+</beans>

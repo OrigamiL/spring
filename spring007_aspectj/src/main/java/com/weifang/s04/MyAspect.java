@@ -61,7 +61,7 @@ public class MyAspect {
         }
     }
     @Around(value = "myPointcut()")
-    public Object myAfter(ProceedingJoinPoint pjp) throws Throwable {
+    public Object myAround(ProceedingJoinPoint pjp) throws Throwable {
         System.out.println("环绕通知的前置通知功能。。。。");
         Object o = pjp.proceed(pjp.getArgs());
         System.out.println("环绕通知的后置通知功能。。。。");

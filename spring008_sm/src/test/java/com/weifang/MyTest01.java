@@ -34,4 +34,29 @@ public class MyTest01 {
         int save = service.save(new Accounts(11, "zhangSan", "123"));
         System.out.println("返回值："+save);
     }
+    /*
+    *      U           A              result
+    *    无事务       无事务           users = OK   accounts = OK
+    *    无事务       REQUIRED        users = OK   accounts = NO
+    *    REQUIRED    无事务           users = NO   accounts = NO
+    *    REQUIRED    NOT_SUPPORTED   users = NO   accounts = OK
+    *    REQUIRED    SUPPORTS        users = NO   accounts = NO
+    *    REQUIRED    REQUIRES_NEW    users = NO   accounts = NO
+    *    REQUIRED    REQUIRED        users = NO   accounts = NO
+    *    REQUIRED    NEVER           users = NO   accounts = NO
+     * */
+    @Test
+    public void testTran() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext_service.xml");
+        UsersService service = (UsersService) ac.getBean("usersServiceImpl");
+        int num = service.insert(new Users(12, "zZ", "111"));
+        System.out.println(num);
+    }
+    @Test
+    public void testTran2() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext_trans.xml");
+        UsersService service = (UsersService) ac.getBean("usersServiceImpl");
+        int num = service.insert(new Users(13, "zZ", "111"));
+        System.out.println(num);
+    }
 }
